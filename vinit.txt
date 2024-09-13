@@ -1,20 +1,21 @@
-Select fn.period ,fn.Openm, fn.Newm,fn.Resolvedm
+Select fn.period as "period",fn.Openm "Openm", fn.Newm "newm",fn.Resolvedm "Resolvedm"
 from
 (
 SELECT 
-  t1.Period as "period", t2.Prior_Period as "priorperiod",
+  sn.Period as "period", sn.Prior_Period as "priorperiod",
   count(CASE(
-    when t1.AccountID1 is not null 
-    and t2.AccountID is null then 1 END
+    when sn.AccountID1 is not null 
+    and sn.AccountID is null then 1 END
   )) AS "Openm", 
   count(CASE(
-    when t1.AccountID1 is null 
-    and t2.AccountID is not null then 1 END
+    when sn.AccountID1 is null 
+    and sn.AccountID is not null then 1 END
   )) AS "Newm", 
   count(CASE(
-    when t1.AccountID1 <> t2.AccountID then 1 END
+    when sn.AccountID1 <> sn.AccountID then 1 END
   )) AS "Resolvedm" 
 from 
+  (
   (
     SELECT 
       R_PeriodEO.PERIOD_NAME AS "Period", 
@@ -42,18 +43,18 @@ from
                       CASE WHEN BalanceSummaryEO1.AMOUNT is not null 
                       OR (
                         BalanceSummaryEO2.AMOUNT is not null 
-                        AND FormatEO.RECONCILIATION_METHOD IN ('B', 'D', 'T')
+                        AND FormatEO.RECONCILIATION_METHOD IN ("B", "D", "T")
                       ) 
                       OR (
                         BalanceSummaryEO4.AMOUNT is not null 
-                        AND FormatEO.RECONCILIATION_METHOD = 'V'
+                        AND FormatEO.RECONCILIATION_METHOD = "V"
                       ) 
                       OR BalanceSummaryEO3.AMOUNT is not null 
                       OR BalanceSummaryEO5.AMOUNT is not null THEN ROUND(
-                        coalesce(BalanceSummaryEO1.AMOUNT, 0) - CASE WHEN FormatEO.RECONCILIATION_METHOD IN ('B', 'D', 'T') THEN coalesce(BalanceSummaryEO2.AMOUNT, 0) ELSE 0 END - CASE WHEN (
-                          FormatEO.RECONCILIATION_METHOD = 'V' 
+                        coalesce(BalanceSummaryEO1.AMOUNT, 0) - CASE WHEN FormatEO.RECONCILIATION_METHOD IN ("B", "D", "T") THEN coalesce(BalanceSummaryEO2.AMOUNT, 0) ELSE 0 END - CASE WHEN (
+                          FormatEO.RECONCILIATION_METHOD = "V" 
                           AND ReconciliationEO2.VARIANCE_PERIOD_ID IS NOT NULL
-                        ) THEN coalesce(BalanceSummaryEO4.AMOUNT, 0) ELSE 0 END - coalesce(BalanceSummaryEO3.AMOUNT, 0) - CASE WHEN FormatEO.RECONCILIATION_METHOD = 'C' THEN coalesce(BalanceSummaryEO5.AMOUNT, 0) ELSE 0 END, 
+                        ) THEN coalesce(BalanceSummaryEO4.AMOUNT, 0) ELSE 0 END - coalesce(BalanceSummaryEO3.AMOUNT, 0) - CASE WHEN FormatEO.RECONCILIATION_METHOD = "C" THEN coalesce(BalanceSummaryEO5.AMOUNT, 0) ELSE 0 END, 
                         CurrenciesEO.DECIMAL_PLACES
                       ) ELSE null END * acr.RATE
                     ) 
@@ -64,7 +65,7 @@ from
                     ) 
                     INNER JOIN FCM_CURRENCIES CurrenciesEO ON (
                       1 = 1 
-                      AND CurrenciesEO.IN_USE_ARM = 'Y'
+                      AND CurrenciesEO.IN_USE_ARM = "Y"
                     ) 
                     LEFT OUTER JOIN ARM_RECONCILIATIONS ReconciliationEO2 ON (
                       ReconciliationEO1.RECONCILIATION_ACCOUNT_ID = ReconciliationEO2.RECONCILIATION_ACCOUNT_ID 
@@ -95,7 +96,7 @@ from
                       ReconciliationEO2.RECONCILIATION_ID = BalanceSummaryEO3.RECONCILIATION_ID 
                       AND BalanceSummaryEO3.CURRENCY_BUCKET_ID = 100003 
                       AND BalanceSummaryEO3.CURRENCY = CurrenciesEO.CURRENCY 
-                      AND BalanceSummaryEO3.TRANSACTION_TYPE = 'BEX'
+                      AND BalanceSummaryEO3.TRANSACTION_TYPE = "BEX"
                     ) 
                     LEFT OUTER JOIN (
                       SELECT 
@@ -139,7 +140,7 @@ from
                         ARM_RATE_TYPES
                     ) acr ON (
                       acr.FROM_CURRENCY = CurrenciesEO.CURRENCY 
-                      AND UPPER(acr.TO_CURRENCY) = UPPER('GBP') 
+                      AND UPPER(acr.TO_CURRENCY) = UPPER("GBP") 
                       AND acr.RATE_TYPE_ID = ReconciliationEO1.RATE_TYPE_ID 
                       AND acr.PERIOD_ID = ReconciliationEO1.PERIOD_ID
                     ) 
@@ -181,18 +182,18 @@ from
                       CASE WHEN BalanceSummaryEO11.AMOUNT is not null 
                       OR (
                         BalanceSummaryEO12.AMOUNT is not null 
-                        AND FormatEO1.RECONCILIATION_METHOD IN ('B', 'D', 'T')
+                        AND FormatEO1.RECONCILIATION_METHOD IN ("B", "D", "T")
                       ) 
                       OR (
                         BalanceSummaryEO14.AMOUNT is not null 
-                        AND FormatEO1.RECONCILIATION_METHOD = 'V'
+                        AND FormatEO1.RECONCILIATION_METHOD = "V"
                       ) 
                       OR BalanceSummaryEO13.AMOUNT is not null 
                       OR BalanceSummaryEO15.AMOUNT is not null THEN ROUND(
-                        coalesce(BalanceSummaryEO11.AMOUNT, 0) - CASE WHEN FormatEO1.RECONCILIATION_METHOD IN ('B', 'D', 'T') THEN coalesce(BalanceSummaryEO12.AMOUNT, 0) ELSE 0 END - CASE WHEN (
-                          FormatEO1.RECONCILIATION_METHOD = 'V' 
+                        coalesce(BalanceSummaryEO11.AMOUNT, 0) - CASE WHEN FormatEO1.RECONCILIATION_METHOD IN ("B", "D", "T") THEN coalesce(BalanceSummaryEO12.AMOUNT, 0) ELSE 0 END - CASE WHEN (
+                          FormatEO1.RECONCILIATION_METHOD = "V" 
                           AND ReconciliationEO12.VARIANCE_PERIOD_ID IS NOT NULL
-                        ) THEN coalesce(BalanceSummaryEO14.AMOUNT, 0) ELSE 0 END - coalesce(BalanceSummaryEO13.AMOUNT, 0) - CASE WHEN FormatEO1.RECONCILIATION_METHOD = 'C' THEN coalesce(BalanceSummaryEO15.AMOUNT, 0) ELSE 0 END, 
+                        ) THEN coalesce(BalanceSummaryEO14.AMOUNT, 0) ELSE 0 END - coalesce(BalanceSummaryEO13.AMOUNT, 0) - CASE WHEN FormatEO1.RECONCILIATION_METHOD = "C" THEN coalesce(BalanceSummaryEO15.AMOUNT, 0) ELSE 0 END, 
                         CurrenciesEO1.DECIMAL_PLACES
                       ) ELSE null END * acr.RATE
                     ) 
@@ -203,7 +204,7 @@ from
                     ) 
                     INNER JOIN FCM_CURRENCIES CurrenciesEO1 ON (
                       1 = 1 
-                      AND CurrenciesEO1.IN_USE_ARM = 'Y'
+                      AND CurrenciesEO1.IN_USE_ARM = "Y"
                     ) 
                     LEFT OUTER JOIN ARM_RECONCILIATIONS ReconciliationEO12 ON (
                       ReconciliationEO11.RECONCILIATION_ACCOUNT_ID = ReconciliationEO12.RECONCILIATION_ACCOUNT_ID 
@@ -234,7 +235,7 @@ from
                       ReconciliationEO12.RECONCILIATION_ID = BalanceSummaryEO13.RECONCILIATION_ID 
                       AND BalanceSummaryEO13.CURRENCY_BUCKET_ID = 100003 
                       AND BalanceSummaryEO13.CURRENCY = CurrenciesEO1.CURRENCY 
-                      AND BalanceSummaryEO13.TRANSACTION_TYPE = 'BEX'
+                      AND BalanceSummaryEO13.TRANSACTION_TYPE = "BEX"
                     ) 
                     LEFT OUTER JOIN (
                       SELECT 
@@ -278,7 +279,7 @@ from
                         ARM_RATE_TYPES
                     ) acr ON (
                       acr.FROM_CURRENCY = CurrenciesEO1.CURRENCY 
-                      AND UPPER(acr.TO_CURRENCY) = UPPER('GBP') 
+                      AND UPPER(acr.TO_CURRENCY) = UPPER("GBP") 
                       AND acr.RATE_TYPE_ID = ReconciliationEO11.RATE_TYPE_ID 
                       AND acr.PERIOD_ID = ReconciliationEO11.PERIOD_ID
                     ) 
@@ -291,7 +292,12 @@ from
         )
       )
   ) t2 ON t1.ReconciliationEO.RECONCILIATION_ACCOUNT_ID = t2.ReconciliationEO1.RECONCILIATION_ACCOUNT_ID
+ )sn 
 ) fn
-ORDER BY 
+group by 
+  fn.period
+  ORDER BY 
       TO_DATE(
-        '01-' || R_PeriodEO.PERIOD_NAME, 'DD-MON-YY'
+        '01-' || fn.period, 'DD-MON-YY'
+      ) DESC
+	  
