@@ -1,0 +1,27 @@
+SELECT fn.period AS "period",
+       fn.Openm AS "Openm",
+       fn.Newm AS "newm",
+       fn.Resolvedm AS "Resolvedm"
+FROM
+(
+  SELECT 
+    sn.Period AS "period",
+    sn.Prior_Period AS "priorperiod",
+    COUNT(CASE
+      WHEN sn.AccountID1 IS NOT NULL AND sn.AccountID IS NULL THEN 1
+      ELSE 0
+    END) AS "Openm",
+    COUNT(CASE
+      WHEN sn.AccountID1 IS NULL AND sn.AccountID IS NOT NULL THEN 1
+      ELSE 0
+    END) AS "Newm",
+    COUNT(CASE
+      WHEN sn.AccountID1 <> sn.AccountID THEN 1
+      ELSE 0
+    END) AS "Resolvedm"
+  FROM
+  (
+    -- Your subquery here
+  ) sn
+GROUP BY fn.period
+ORDER BY TO_DATE('01-' || fn.period, 'DD-MON-YY') DESC
