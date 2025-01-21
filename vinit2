@@ -1,17 +1,75 @@
-SELECT ReconciliationEO.RECONCILIATION_ACCOUNT_ID  AS "Account_ID_curr" ,
- R_PeriodEO.PERIOD_NAME  AS "Period_curr" 
-FROM ARM_RECONCILIATIONS ReconciliationEO 
-LEFT OUTER JOIN ARM_PERIODS R_PeriodEO ON (ReconciliationEO.PERIOD_ID = R_PeriodEO.PERIOD_ID)
-WHERE (ReconciliationEO.PERIOD_ID <> -2)
-AND ((((ReconciliationEO.PERIOD_ID  =  ~PERIOD~ )
- AND  EXISTS (SELECT /*+ FIRST_ROWS(1) */ 1 FROM ARM_RECONCILIATIONS ReconciliationEO1 LEFT OUTER JOIN ARM_BALANCE_TOTALS R_BalanceTotalEO ON (ReconciliationEO1.RECONCILIATION_ACCOUNT_ID = R_BalanceTotalEO.PROFILE_ID AND R_BalanceTotalEO.PERIOD_ID = ReconciliationEO1.PERIOD_ID) LEFT OUTER JOIN ARM_BALANCE_TOTALS R_VPBalanceTotalEO ON (ReconciliationEO1.RECONCILIATION_ACCOUNT_ID = R_VPBalanceTotalEO.PROFILE_ID AND R_VPBalanceTotalEO.PERIOD_ID = ReconciliationEO1.VARIANCE_PERIOD_ID) WHERE ReconciliationEO.RECONCILIATION_ID = ReconciliationEO1.RECONCILIATION_ID AND (ABS(ROUND(FCM_CALC_UTILS.translateDifference(R_BalanceTotalEO.BSRC100003, R_BalanceTotalEO.BSUB100003, R_BalanceTotalEO.BEX100003, R_VPBalanceTotalEO.BSRC100003, R_BalanceTotalEO.TM1100003, R_BalanceTotalEO.TM2100003, R_BalanceTotalEO.TM3100003, (SELECT RECONCILIATION_METHOD FROM ARM_FORMATS WHERE FORMAT_ID = ReconciliationEO.FORMAT_ID), R_BalanceTotalEO.PERIOD_ID, 'GBP', ReconciliationEO.RATE_TYPE_ID), 2))  >=  1 ))))) 
- 
- UNION ALL
- 
-SELECT ReconciliationEO.RECONCILIATION_ACCOUNT_ID  AS "Account_ID_prv" ,
- R_PeriodEO.PERIOD_NAME  AS "Period_prv" 
-FROM ARM_RECONCILIATIONS ReconciliationEO 
-LEFT OUTER JOIN ARM_PERIODS R_PeriodEO ON (ReconciliationEO.PERIOD_ID = R_PeriodEO.PERIOD_ID)
-WHERE (ReconciliationEO.PERIOD_ID <> -2)
-AND ((((ReconciliationEO.PERIOD_ID  =  ~PERIOD-2~ )
- AND  EXISTS (SELECT /*+ FIRST_ROWS(1) */ 1 FROM ARM_RECONCILIATIONS ReconciliationEO1 LEFT OUTER JOIN ARM_BALANCE_TOTALS R_BalanceTotalEO ON (ReconciliationEO1.RECONCILIATION_ACCOUNT_ID = R_BalanceTotalEO.PROFILE_ID AND R_BalanceTotalEO.PERIOD_ID = ReconciliationEO1.PERIOD_ID) LEFT OUTER JOIN ARM_BALANCE_TOTALS R_VPBalanceTotalEO ON (ReconciliationEO1.RECONCILIATION_ACCOUNT_ID = R_VPBalanceTotalEO.PROFILE_ID AND R_VPBalanceTotalEO.PERIOD_ID = ReconciliationEO1.VARIANCE_PERIOD_ID) WHERE ReconciliationEO.RECONCILIATION_ID = ReconciliationEO1.RECONCILIATION_ID AND (ABS(ROUND(FCM_CALC_UTILS.translateDifference(R_BalanceTotalEO.BSRC100003, R_BalanceTotalEO.BSUB100003, R_BalanceTotalEO.BEX100003, R_VPBalanceTotalEO.BSRC100003, R_BalanceTotalEO.TM1100003, R_BalanceTotalEO.TM2100003, R_BalanceTotalEO.TM3100003, (SELECT RECONCILIATION_METHOD FROM ARM_FORMATS WHERE FORMAT_ID = ReconciliationEO.FORMAT_ID), R_BalanceTotalEO.PERIOD_ID, 'GBP', ReconciliationEO.RATE_TYPE_ID), 2))  >=  1 ))))) 
+SELECT
+    c.Period_curr,
+    COUNT(DISTINCT p.Account_ID_prv) AS opening_count,
+    COUNT(DISTINCT c.Account_ID_curr) AS new_count,
+    COUNT(DISTINCT p.Account_ID_prv) - COUNT(DISTINCT c.Account_ID_curr) AS resolved_count
+FROM
+    (  -- Current Period
+        SELECT 
+            ReconciliationEO.RECONCILIATION_ACCOUNT_ID AS Account_ID_curr,
+            R_PeriodEO.PERIOD_NAME AS Period_curr
+        FROM ARM_RECONCILIATIONS ReconciliationEO
+        LEFT OUTER JOIN ARM_PERIODS R_PeriodEO 
+            ON ReconciliationEO.PERIOD_ID = R_PeriodEO.PERIOD_ID
+        WHERE ReconciliationEO.PERIOD_ID <> -2
+        AND ReconciliationEO.PERIOD_ID = ~PERIOD~ 
+        AND EXISTS (
+            SELECT /*+ FIRST_ROWS(1) */ 1
+            FROM ARM_RECONCILIATIONS ReconciliationEO1
+            LEFT OUTER JOIN ARM_BALANCE_TOTALS R_BalanceTotalEO 
+                ON ReconciliationEO1.RECONCILIATION_ACCOUNT_ID = R_BalanceTotalEO.PROFILE_ID
+                AND R_BalanceTotalEO.PERIOD_ID = ReconciliationEO1.PERIOD_ID
+            LEFT OUTER JOIN ARM_BALANCE_TOTALS R_VPBalanceTotalEO 
+                ON ReconciliationEO1.RECONCILIATION_ACCOUNT_ID = R_VPBalanceTotalEO.PROFILE_ID
+                AND R_VPBalanceTotalEO.PERIOD_ID = ReconciliationEO1.VARIANCE_PERIOD_ID
+            WHERE ReconciliationEO.RECONCILIATION_ID = ReconciliationEO1.RECONCILIATION_ID
+            AND ABS(ROUND(FCM_CALC_UTILS.translateDifference(
+                    R_BalanceTotalEO.BSRC100003, 
+                    R_BalanceTotalEO.BSUB100003, 
+                    R_BalanceTotalEO.BEX100003, 
+                    R_VPBalanceTotalEO.BSRC100003, 
+                    R_BalanceTotalEO.TM1100003, 
+                    R_BalanceTotalEO.TM2100003, 
+                    R_BalanceTotalEO.TM3100003, 
+                    (SELECT RECONCILIATION_METHOD FROM ARM_FORMATS WHERE FORMAT_ID = ReconciliationEO.FORMAT_ID), 
+                    R_BalanceTotalEO.PERIOD_ID, 
+                    'GBP', 
+                    ReconciliationEO.RATE_TYPE_ID), 2)) >= 1
+        )
+    ) c
+LEFT JOIN
+    (  -- Previous Period
+        SELECT 
+            ReconciliationEO.RECONCILIATION_ACCOUNT_ID AS Account_ID_prv,
+            R_PeriodEO.PERIOD_NAME AS Period_prv
+        FROM ARM_RECONCILIATIONS ReconciliationEO
+        LEFT OUTER JOIN ARM_PERIODS R_PeriodEO 
+            ON ReconciliationEO.PERIOD_ID = R_PeriodEO.PERIOD_ID
+        WHERE ReconciliationEO.PERIOD_ID <> -2
+        AND ReconciliationEO.PERIOD_ID = ~PERIOD-2~ 
+        AND EXISTS (
+            SELECT /*+ FIRST_ROWS(1) */ 1
+            FROM ARM_RECONCILIATIONS ReconciliationEO1
+            LEFT OUTER JOIN ARM_BALANCE_TOTALS R_BalanceTotalEO 
+                ON ReconciliationEO1.RECONCILIATION_ACCOUNT_ID = R_BalanceTotalEO.PROFILE_ID
+                AND R_BalanceTotalEO.PERIOD_ID = ReconciliationEO1.PERIOD_ID
+            LEFT OUTER JOIN ARM_BALANCE_TOTALS R_VPBalanceTotalEO 
+                ON ReconciliationEO1.RECONCILIATION_ACCOUNT_ID = R_VPBalanceTotalEO.PROFILE_ID
+                AND R_VPBalanceTotalEO.PERIOD_ID = ReconciliationEO1.VARIANCE_PERIOD_ID
+            WHERE ReconciliationEO.RECONCILIATION_ID = ReconciliationEO1.RECONCILIATION_ID
+            AND ABS(ROUND(FCM_CALC_UTILS.translateDifference(
+                    R_BalanceTotalEO.BSRC100003, 
+                    R_BalanceTotalEO.BSUB100003, 
+                    R_BalanceTotalEO.BEX100003, 
+                    R_VPBalanceTotalEO.BSRC100003, 
+                    R_BalanceTotalEO.TM1100003, 
+                    R_BalanceTotalEO.TM2100003, 
+                    R_BalanceTotalEO.TM3100003, 
+                    (SELECT RECONCILIATION_METHOD FROM ARM_FORMATS WHERE FORMAT_ID = ReconciliationEO.FORMAT_ID), 
+                    R_BalanceTotalEO.PERIOD_ID, 
+                    'GBP', 
+                    ReconciliationEO.RATE_TYPE_ID), 2)) >= 1
+        )
+    ) p
+ON c.Account_ID_curr = p.Account_ID_prv
+GROUP BY c.Period_curr;
