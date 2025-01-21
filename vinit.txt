@@ -1,6 +1,16 @@
-SELECT R_PeriodEO.PERIOD_NAME  AS "Period" ,
- ReconciliationEO.RECONCILIATION_ACCOUNT_ID  AS "Account ID" 
-FROM ARM_RECONCILIATIONS ReconciliationEO 
-LEFT OUTER JOIN ARM_PERIODS R_PeriodEO ON (ReconciliationEO.PERIOD_ID = R_PeriodEO.PERIOD_ID)
-WHERE (((ReconciliationEO.PERIOD_ID  =  Select R_PeriodEO1.PERIOD_ID-2 FROM ARM_RECONCILIATIONS ReconciliationEO1 
-LEFT OUTER JOIN ARM_PERIODS R_PeriodEO1 ON (ReconciliationEO1.PERIOD_ID = R_PeriodEO1.PERIOD_ID) WHERE (((ReconciliationEO1.PERIOD_ID  =~Period~)))   ))) 
+SELECT 
+    R_PeriodEO.PERIOD_NAME AS "Period", 
+    ReconciliationEO.RECONCILIATION_ACCOUNT_ID AS "Account ID"
+FROM 
+    ARM_RECONCILIATIONS ReconciliationEO
+LEFT OUTER JOIN 
+    ARM_PERIODS R_PeriodEO 
+    ON ReconciliationEO.PERIOD_ID = R_PeriodEO.PERIOD_ID
+WHERE 
+    ReconciliationEO.PERIOD_ID = (
+        SELECT R_PeriodEO1.PERIOD_ID - 2
+        FROM ARM_RECONCILIATIONS ReconciliationEO1
+        LEFT OUTER JOIN ARM_PERIODS R_PeriodEO1 
+            ON ReconciliationEO1.PERIOD_ID = R_PeriodEO1.PERIOD_ID
+        WHERE ReconciliationEO1.PERIOD_ID = ~Period~
+    );
