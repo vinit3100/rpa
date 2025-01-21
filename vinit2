@@ -1,8 +1,9 @@
 SELECT
     c.Period_curr,
-    COUNT(DISTINCT p.Account_ID_prv) AS opening_count,
-    COUNT(DISTINCT c.Account_ID_curr) AS new_count,
-    COUNT(DISTINCT p.Account_ID_prv) - COUNT(DISTINCT c.Account_ID_curr) AS resolved_count
+   count(case when p.Account_ID_prv is not null then 1 else 0 END ) as openCT,
+      count (case when c.Account_ID_curr is not null and p.Account_ID_prv is null then 1 else 0 END ) as newCT,
+	   count(case when c.Account_ID_curr is null and p.Account_ID_prv is not null then 1 else 0 END ) as resolved
+ 
 FROM
     (  -- Current Period
         SELECT 
@@ -46,7 +47,7 @@ LEFT JOIN
         LEFT OUTER JOIN ARM_PERIODS R_PeriodEO 
             ON ReconciliationEO.PERIOD_ID = R_PeriodEO.PERIOD_ID
         WHERE ReconciliationEO.PERIOD_ID <> -2
-        AND ReconciliationEO.PERIOD_ID = ~PERIOD-2~ 
+        AND ReconciliationEO.PERIOD_ID = (~PERIOD~-2 )
         AND EXISTS (
             SELECT /*+ FIRST_ROWS(1) */ 1
             FROM ARM_RECONCILIATIONS ReconciliationEO1
@@ -72,4 +73,4 @@ LEFT JOIN
         )
     ) p
 ON c.Account_ID_curr = p.Account_ID_prv
-GROUP BY c.Period_curr;
+GROUP BY c.Period_curr
