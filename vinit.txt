@@ -1,16 +1,22 @@
-SELECT 
-    R_PeriodEO.PERIOD_NAME AS "Period", 
-    ReconciliationEO.RECONCILIATION_ACCOUNT_ID AS "Account ID"
-FROM 
-    ARM_RECONCILIATIONS ReconciliationEO
-LEFT OUTER JOIN 
-    ARM_PERIODS R_PeriodEO 
-    ON ReconciliationEO.PERIOD_ID = R_PeriodEO.PERIOD_ID
-WHERE 
-    ReconciliationEO.PERIOD_ID = (
-        SELECT R_PeriodEO1.PERIOD_ID - 2
-        FROM ARM_RECONCILIATIONS ReconciliationEO1
-        LEFT OUTER JOIN ARM_PERIODS R_PeriodEO1 
-            ON ReconciliationEO1.PERIOD_ID = R_PeriodEO1.PERIOD_ID
-        WHERE ReconciliationEO1.PERIOD_ID = ~Period~
-    );
+<html><head> 
+<style type="text/css"> 
+        body { 
+            font-family: Calibri; 
+        } 
+        p { 
+            margin: 0; 
+        } 
+        .mapping { 
+            background-color: #D3D4D7; 
+            color: black; 
+            padding: 1px; 
+        } 
+    </style> 
+<!-- Instruct the web browser control to use IE 6 to render the page. --> 
+<meta content="IE=6" http-equiv="X-UA-Compatible" /></head> 
+<body> 
+<p style="margin: 0px">Hello team,</p> 
+<p style="margin: 0px">&nbsp;</p> 
+<p style="margin: 0px">Please refer below detail-</p> 
+<p style="margin: 0px">&nbsp;</p> 
+<p style="margin: 0px"><table width="100%" height="1%" cellspacing="0" cellpadding="8" border="1" align=""><tr><th width="20%">Overall Status</th><th width="20%"></th><th width="20%">GREEN</th><th width="20%"></th><th width="20%"></th></tr><tr><td width="20%">     15-Nov-2024</td><td width="20%"></td><td width="20%"></td><td width="20%"></td><td width="20%"></td></tr><tr><td width="20%">APPLICATION</td><td width="20%">System check description</td><td width="20%">Run Window</td><td width="20%">Status</td><td width="20%">Comments</td></tr><tr><td width="20%"></td><td width="20%"></td><td width="20%"></td><td width="20%"></td><td width="20%"></td></tr><tr><td width="20%">        EDMCS Prod.</td><td width="20%">https://epm10-natwestepm3.epm.em3.oraclecloud.com/epm</td><td width="20%"></td><td width="20%">GREEN</td><td width="20%"></td></tr><tr><td width="20%">          EDMCS PC</td><td width="20%">https://epm61-natwestepm3.epm.em3.oraclecloud.com/epm</td><td width="20%"></td><td width="20%">GREEN</td><td width="20%"></td></tr><tr><td width="20%">          EDMCS PCC</td><td width="20%">https://epm62-natwestepm3.epm.em3.oraclecloud.com/epm</td><td width="20%"></td><td width="20%">GREEN</td><td width="20%"></td></tr><tr><td width="20%">FCCS </td><td width="20%">FCCS URL Accessibility </td><td width="20%"></td><td width="20%">GREEN</td><td width="20%"></td></tr><tr><td width="20%"></td><td width="20%">https://epm7-natwestepm3.epm.em3.oraclecloud.com/HyperionPlanning/</td><td width="20%"></td><td width="20%"></td><td width="20%"></td></tr><tr><td width="20%"></td><td width="20%">FGL to FCCS Data Load/Consolidation and Translation</td><td width="20%">WD 2 to WD 19</td><td width="20%">       GREEN</td><td width="20%"></td></tr><tr><td width="20%"></td><td width="20%">FGL to FCCS FX Rate Load</td><td width="20%">Runs on CD 1 ONLY</td><td width="20%">       GREEN</td><td width="20%"></td></tr><tr><td width="20%"></td><td width="20%">FGL to FDS Reconciliation Data Load</td><td width="20%">Daily</td><td width="20%">       GREEN</td><td width="20%"></td></tr><tr><td width="20%"></td><td width="20%">FCCS EC/RCA data load to FDS </td><td width="20%">Daily</td><td width="20%">GREEN</td><td width="20%"></td></tr><tr><td width="20%"></td><td width="20%">FCCS Treasury Data Load </td><td width="20%">Daily</td><td width="20%">GREEN</td><td width="20%"></td></tr><tr><td width="20%"></td><td width="20%">FCCS Adjustment &amp; Elimination data load to FDS</td><td width="20%">Daily</td><td width="20%">GREEN</td><td width="20%"></td></tr><tr><td width="20%"></td><td width="20%">Daily Maintenance batch</td><td width="20%">Post FGL EOD and FCCS Spot load</td><td width="20%">GREEN</td><td width="20%"></td></tr><tr><td width="20%">FCCS to AXIOM Integrations</td><td width="20%">FCCS to AXIOM FR Integration</td><td width="20%">Daily post scheduled consolidation and translation integration if Flag is set by AXIOM team</td><td width="20%"></td><td width="20%"></td></tr><tr><td width="20%"></td><td width="20%">FCCS to AXIOM PR Integration</td><td width="20%"></td><td width="20%"></td><td width="20%"></td></tr><tr><td width="20%"></td><td width="20%">FCCS to AXIOM CR Integration</td><td width="20%"></td><td width="20%"></td><td width="20%"></td></tr><tr><td width="20%"></td><td width="20%">FCCS to AXIOM RFB003 Integration</td><td width="20%"></td><td width="20%"></td><td width="20%"></td></tr><tr><td width="20%"></td><td width="20%">FCCS to AXIOM RFB004 Integration</td><td width="20%"></td><td width="20%"></td><td width="20%"></td></tr><tr><td width="20%">ARCS ICO</td><td width="20%">ARCS URL Accessibility </td><td width="20%"></td><td width="20%">GREEN</td><td width="20%"></td></tr><tr><td width="20%"></td><td width="20%">https://epm-natwestepm3.epm.em3.oraclecloud.com/epmcloud</td><td width="20%"></td><td width="20%"></td><td width="20%"></td></tr><tr><td width="20%">ARCS SSR</td><td width="20%">ARCS SSR Accessibility </td><td width="20%"></td><td width="20%">GREEN</td><td width="20%"></td></tr><tr><td width="20%"></td><td width="20%">https://epm63-natwestepm3.epm.em3.oraclecloud.com/arm/ </td><td width="20%"></td><td width="20%"></td><td width="20%"></td></tr><tr><td width="20%">ARCS ICO Integrations</td><td width="20%">FGL to ARCS Data Load</td><td width="20%">Till WD20</td><td width="20%">       GREEN</td><td width="20%">  </td></tr><tr><td width="20%"></td><td width="20%">ARCS to FDS Data Load</td><td width="20%">Till WD20</td><td width="20%">GREEN</td><td width="20%"></td></tr><tr><td width="20%">EPRCS NWM</td><td width="20%">https://epm5-natwestepm3.epm.em3.oraclecloud.com/epmcloud</td><td width="20%"></td><td width="20%">GREEN</td><td width="20%"></td></tr><tr><td width="20%">EPRCS NWG</td><td width="20%">https://epm8-natwestepm3.epm.em3.oraclecloud.com/epmcloud</td><td width="20%"></td><td width="20%">GREEN</td><td width="20%"></td></tr><tr><td width="20%">EPRCS STBOP</td><td width="20%">https://epm66-natwestepm3.epm.em3.oraclecloud.com/epmcloud</td><td width="20%"></td><td width="20%">GREEN</td><td width="20%"></td></tr><tr><td width="20%">EPRCS FCRA</td><td width="20%">https://epm64-natwestepm3.epm.em3.oraclecloud.com/epmcloud</td><td width="20%"></td><td width="20%">GREEN</td><td width="20%"></td></tr></table></p></body></html>
