@@ -1,20 +1,240 @@
-[
-    { "disclosure_name": '20F001', "disc_status": 'completed', "disclosure_status": 'Approved', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'completed', levelF: [{ desc: 'Ready to Review', status: 'completed', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'completed', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'completed', levelF: [{ desc: 'Reports', status: 'completed', }, { desc: 'Commentary', status: 'completed' }, { desc: 'Adjustments', status: 'completed', }, { desc: 'Sign-Off', status: 'completed' }], levelS: [], levelT: [], level4: [], }, ]},
-    { "disclosure_name": '20F002', "disc_status": 'running', "disclosure_status":'Awaiting Approval by LEP Approver', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'running', levelF: [{ desc: 'Ready to Review', status: 'running', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'running', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'not_started', levelF: [{ desc: 'Reports', status: 'not_started', }, { desc: 'Commentary', status: 'not_started' }, { desc: 'Adjustments', status: 'not_started', }, { desc: 'Sign-Off', status: 'not_started' }], levelS: [], levelT: [], level4: [], }, ]},
-    { "disclosure_name": '20F003', "disc_status": 'not_started', "disclosure_status":'Not started', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'not_started', levelF: [{ desc: 'Ready to Review', status: 'not_started', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'not_started', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'not_started', levelF: [{ desc: 'Reports', status: 'not_started', }, { desc: 'Commentary', status: 'not_started' }, { desc: 'Adjustments', status: 'not_started', }, { desc: 'Sign-Off', status: 'not_started' }], levelS: [], levelT: [], level4: [], }, ]},
-    { "disclosure_name": '20F004', "disc_status": 'error', "disclosure_status":'Not started', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'error', levelF: [{ desc: 'Ready to Review', status: 'error', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'error', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'not_started', levelF: [{ desc: 'Reports', status: 'not_started', }, { desc: 'Commentary', status: 'not_started' }, { desc: 'Adjustments', status: 'not_started', }, { desc: 'Sign-Off', status: 'not_started' }], levelS: [], levelT: [], level4: [], }, ], },
-    { "disclosure_name": 'CR001', "disc_status": 'user_input', "disclosure_status":'Not started', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'completed', levelF: [{ desc: 'Ready to Review', status: 'completed', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'completed', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'user_input', levelF: [{ desc: 'Reports', status: 'completed', }, { desc: 'Commentary', status: 'user_input' }, { desc: 'Adjustments', status: 'not_started', }, { desc: 'Sign-Off', status: 'not_started' }], levelS: [], levelT: [], level4: [], } ,], },
-    { "disclosure_name": 'CR003', "disc_status": 'not_started', "disclosure_status":'Approved', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'completed', levelF: [{ desc: 'Ready to Review', status: 'completed', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'completed', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'completed', levelF: [{ desc: 'Reports', status: 'completed', }, { desc: 'Commentary', status: 'completed' }, { desc: 'Adjustments', status: 'completed', }, { desc: 'Sign-Off', status: 'completed' }], levelS: [], levelT: [], level4: [], }, ]},
-    { "disclosure_name": 'CR004', "disc_status": 'running', "disclosure_status":'Approved', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'not_started', levelF: [{ desc: 'Ready to Review', status: 'not_started', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'not_started', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'not_started', levelF: [{ desc: 'Reports', status: 'not_started', }, { desc: 'Commentary', status: 'not_started' }, { desc: 'Adjustments', status: 'not_started', }, { desc: 'Sign-Off', status: 'not_started' }], levelS: [], levelT: [], level4: [], }, ]},
-    { "disclosure_name": 'CR005', "disc_status": 'completed', "disclosure_status":'FGL year-end close confirmed, Var Analysis not started', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'completed', levelF: [{ desc: 'Ready to Review', status: 'completed', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'completed', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'completed', levelF: [{ desc: 'Reports', status: 'completed', }, { desc: 'Commentary', status: 'completed' }, { desc: 'Adjustments', status: 'completed', }, { desc: 'Sign-Off', status: 'completed' }], levelS: [], levelT: [], level4: [], }, ]},
-    { "disclosure_name": 'F08.01', "disc_status": 'completed', "disclosure_status":'Variance Analysis In Progress with Group Submitter', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'completed', levelF: [{ desc: 'Ready to Review', status: 'completed', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'completed', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'completed', levelF: [{ desc: 'Reports', status: 'completed', }, { desc: 'Commentary', status: 'completed' }, { desc: 'Adjustments', status: 'completed', }, { desc: 'Sign-Off', status: 'completed' }], levelS: [], levelT: [], level4: [], }, ]},
-    { "disclosure_name": 'F11.01', "disc_status": 'running', "disclosure_status":'Approved', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'not_started', levelF: [{ desc: 'Ready to Review', status: 'not_started', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'not_started', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'not_started', levelF: [{ desc: 'Reports', status: 'not_started', }, { desc: 'Commentary', status: 'not_started' }, { desc: 'Adjustments', status: 'not_started', }, { desc: 'Sign-Off', status: 'not_started' }], levelS: [], levelT: [], level4: [], }, ]},
-    { "disclosure_name": 'F14.00', "disc_status": 'completed', "disclosure_status":'Awaiting Approval by LEP Approver', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'completed', levelF: [{ desc: 'Ready to Review', status: 'completed', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'completed', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'completed', levelF: [{ desc: 'Reports', status: 'completed', }, { desc: 'Commentary', status: 'completed' }, { desc: 'Adjustments', status: 'completed', }, { desc: 'Sign-Off', status: 'completed' }], levelS: [], levelT: [], level4: [], }, ]},
-    { "disclosure_name": 'F20.04b', "disc_status": 'running', "disclosure_status":'Variance Analysis In Progress with Group Submitter', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'not_started', levelF: [{ desc: 'Ready to Review', status: 'not_started', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'not_started', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'not_started', levelF: [{ desc: 'Reports', status: 'not_started', }, { desc: 'Commentary', status: 'not_started' }, { desc: 'Adjustments', status: 'not_started', }, { desc: 'Sign-Off', status: 'not_started' }], levelS: [], levelT: [], level4: [], }, ]},
-    { "disclosure_name": 'F20.06', "disc_status": 'completed', "disclosure_status":'Approved', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'completed', levelF: [{ desc: 'Ready to Review', status: 'completed', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'completed', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'completed', levelF: [{ desc: 'Reports', status: 'completed', }, { desc: 'Commentary', status: 'completed' }, { desc: 'Adjustments', status: 'completed', }, { desc: 'Sign-Off', status: 'completed' }], levelS: [], levelT: [], level4: [], }, ]},
-    { "disclosure_name": 'F30', "disc_status": 'running', "disclosure_status":'Awaiting Approval by LEP Approver', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'not_started', levelF: [{ desc: 'Ready to Review', status: 'not_started', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'not_started', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'not_started', levelF: [{ desc: 'Reports', status: 'not_started', }, { desc: 'Commentary', status: 'not_started' }, { desc: 'Adjustments', status: 'not_started', }, { desc: 'Sign-Off', status: 'not_started' }], levelS: [], levelT: [], level4: [], }, ]},
-    { "disclosure_name": 'SNF001', "disc_status": 'completed', "disclosure_status":'Not started', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'completed', levelF: [{ desc: 'Ready to Review', status: 'completed', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'completed', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'completed', levelF: [{ desc: 'Reports', status: 'completed', }, { desc: 'Commentary', status: 'completed' }, { desc: 'Adjustments', status: 'completed', }, { desc: 'Sign-Off', status: 'completed' }], levelS: [], levelT: [], level4: [], }, ]},
-    { "disclosure_name": 'SNF002', "disc_status": 'running', "disclosure_status":'Variance Analysis In Progress with Group Submitter', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'not_started', levelF: [{ desc: 'Ready to Review', status: 'not_started', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'not_started', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'not_started', levelF: [{ desc: 'Reports', status: 'not_started', }, { desc: 'Commentary', status: 'not_started' }, { desc: 'Adjustments', status: 'not_started', }, { desc: 'Sign-Off', status: 'not_started' }], levelS: [], levelT: [], level4: [], }, ]},
-    { "disclosure_name": 'SNF003', "disc_status": 'running', "disclosure_status":'FGL year-end close confirmed, Var Analysis not started', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'not_started', levelF: [{ desc: 'Ready to Review', status: 'not_started', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'not_started', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'not_started', levelF: [{ desc: 'Reports', status: 'not_started', }, { desc: 'Commentary', status: 'not_started' }, { desc: 'Adjustments', status: 'not_started', }, { desc: 'Sign-Off', status: 'not_started' }], levelS: [], levelT: [], level4: [], }, ]},
-    { "disclosure_name": 'SNF004', "disc_status": 'completed', "disclosure_status":'Variance Analysis In Progress with Group Submitter', "run_date": '07-JUL-24', "tasks": [{ id: 1, "title": 'Ready for Variance Analysis', status: 'completed', levelF: [{ desc: 'Ready to Review', status: 'completed', levelS: [] },{ desc: 'Ready for FCCS Upload', status: 'completed', levelS: [] },], levelS: [], levelT: [], level4: [], }, { id: 2, "title": 'Variance Analysis', status: 'completed', levelF: [{ desc: 'Reports', status: 'completed', }, { desc: 'Commentary', status: 'completed' }, { desc: 'Adjustments', status: 'completed', }, { desc: 'Sign-Off', status: 'completed' }], levelS: [], levelT: [], level4: [], }, ]},
-  ]
+// rules-auditability.component.ts
+import { HttpClient } from '@angular/common/http';
+import { AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy, Component, inject, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AgGridComponent } from '@app/core/controls/ag-grid/ag-grid.component';
+import { PageHeadingComponent } from '@app/shared/page-heading/page-heading.component';
+import { CellClassRules, ColDef, GridApi } from 'ag-grid-community';
+import { BreadcrumbComponent } from '@app/shared/breadcrumb/breadcrumb.component';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { ModelPopupComponent } from '@app/core/controls/model-popup/model-popup.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { DataService } from '@app/core/_services';
+import { AgGridAngular } from 'ag-grid-angular';
+import { BusinessRuleService } from '@app/feature/business-rules/business-rule.service';
+import { PdfExportComponent } from '@app/core/controls/pdf-export/pdf-export.component';
+import { ExportConfig, TableData } from '@app/core/controls/pdf-export/pdf-export.models';
+
+
+@Component({
+  selector: 'app-rules-auditability',
+  standalone: true,
+  imports: [
+    PageHeadingComponent,
+    AgGridComponent,
+    BreadcrumbComponent,
+    NgIf,
+    NgFor,
+    ModelPopupComponent,
+    MatButtonModule,
+    MatDialogModule,
+    CommonModule,
+    AgGridAngular,
+    PdfExportComponent,
+
+  ],
+  template: '[disclosureId]="disclosureId"',
+  templateUrl: './rules-auditability.component.html',
+  styleUrl: './rules-auditability.component.scss'
+})
+export class RulesAuditabilityComponent implements AfterViewInit {
+  @ViewChild('breadcrumbRef', { static: true }) breadcrumbRef!: any;
+  @ViewChild('agGridRefParent', { static: true }) agGridRefParent!: any;
+
+  disclosureId: string | null = "";
+  isMapper: boolean = false;
+  bRules: any = [];
+  bRuleType: any;
+  private gridApi: any;
+  public rowData: any = [];
+  public paginationPageSize = 25;
+  public paginationPageSizeSelector: number[] | boolean = [3, 25, 50];
+  addRow: boolean = true;
+  originalTableRow: any;
+  totalAffectedRows: any = [];
+  addedRules: any = [];
+  totalAffectedRowsReview: any = { add: [], update: [], delete: [] };
+  isFetchedData = false;
+  public rowSelection: "single" | "multiple" = "multiple";
+  public themeClass: string = "ag-theme-quartz";
+  public columnDefs: ColDef[] = [];
+  screenType: string = 'extract_audit_rules';
+
+  // PDF Export properties
+  exportData: TableData[] = [];
+  exportConfig: ExportConfig = {
+    filename: 'audit-rules',
+    orientation: 'landscape',
+    headerConfig: {
+      showHeader: true,
+      companyName: '                            EFRA - Rules reporting and attestation'
+    },
+    footerConfig: {
+      showFooter: true,
+      showPageNumbers: true,
+      customText: ''
+    }
+  };
+
+
+  constructor(private businessRuleServ: BusinessRuleService, private activatedRoute: ActivatedRoute,
+    private http: HttpClient, private cdref: ChangeDetectorRef, public dialog: MatDialog,
+    private dataServ: DataService) {
+    this.disclosureId = `${this.activatedRoute.snapshot.paramMap.get('disclosureId')}`;
+    this.businessRuleServ.businessRulesSub.subscribe((data: any) => {
+      this.bRules = this.businessRuleServ.businessRules;
+    });
+    this.bRuleType = this.businessRuleServ.getDisclosureId();
+    if (this.activatedRoute.snapshot.paramMap.get('ruleName')) {
+      var ruleName = this.activatedRoute.snapshot.paramMap.get('ruleName');
+      if (ruleName && ruleName == 'mapper') {
+        this.screenType = 'mapper_audit_rules';
+        this.exportConfig.filename = 'mapper-audit-rules';
+      }
+    }
+  }
+
+  ngAfterViewInit(): void {
+    this.breadcrumbRef.breadcrumbList = [
+      { text: 'Rules Reporting and Attestation', url: `/auditability/summary/${this.disclosureId}` },
+      { text: this.screenType == 'mapper_audit_rules' ? 'Mapper Rules Attestation' : 'Extract Rules Attestation', url: '' }
+    ];
+    this.cdref.detectChanges();
+    this.get_bRules();
+  }
+
+  get_bRules() {
+    this.businessRuleServ.getRulesTable(this.screenType).subscribe((data: any) => {
+      let columnDef: any = [];
+      (data.header).map((header: any, index: number) => {
+        columnDef.push({ "headerName": header.name });
+        if (header.key == undefined && header.header) {
+          columnDef[index]["children"] = [];
+          (header.header).map((subHeader: any) => {
+            columnDef[index].children.push({
+              "headerName": subHeader.name,
+              "field": subHeader.key ? subHeader.key : ""
+            });
+          });
+        } else {
+          columnDef[index].field = header.key;
+        }
+      });
+
+      this.columnDefs = columnDef;
+      this.rowData = JSON.parse(JSON.stringify(data.data));
+      this.originalTableRow = JSON.parse(JSON.stringify(data.data));
+      this.updateExportData();
+      this.cdref.detectChanges();
+    });
+  }
+
+  onGridReady(params: any) {
+    this.gridApi = params.api;
+    this.updateExportData();
+  }
+
+  private updateExportData() {
+    try {
+      if (!this.rowData?.length) return;
+
+      const exportColumns = this.getExportColumns();
+      const headers = exportColumns.map(col => col.header);
+      const rows = this.getExportRows(exportColumns);
+
+      this.exportData = [{
+        title: this.getExportTitle(),
+        headers,
+        rows
+      }];
+
+      this.cdref.detectChanges();
+    } catch (error) {
+      console.error('Error updating export data:', error);
+    }
+  }
+
+  private getExportColumns(): { header: string; field: string }[] {
+    return this.columnDefs.flatMap((colDef: any) => {
+      if (colDef.children) {
+        return colDef.children
+          .filter((child: any) => child.headerName && child.field)
+          .map((child: any) => ({
+            header: `${colDef.headerName} - ${child.headerName}`,
+            field: child.field
+          }));
+      } else if (colDef.field) {
+        return [{
+          header: colDef.headerName,
+          field: colDef.field
+        }];
+      }
+      return [];
+    });
+  }
+
+  private getExportRows(exportColumns: { field: string }[]): any[][] {
+    return this.rowData.map((row: any) =>
+      exportColumns.map(col => row[col.field] ?? '')
+    );
+  }
+
+  private getExportTitle(): string {
+    return this.screenType === 'mapper_audit_rules'
+      ? 'Mapper Rules Attestation'
+      : 'Extract Rules Attestation';
+  }
+
+
+  onDisclosureChange(newDisclosureId: string) {
+    if (newDisclosureId === 'All') {
+      this.rowData = [...this.originalTableRow];
+    } else {
+      this.rowData = this.originalTableRow.filter((row: any) =>
+        row.disclosure_id === newDisclosureId
+      );
+    }
+    if (this.gridApi) {
+      this.gridApi.setRowData(this.rowData);
+      this.updateExportData();
+    }
+  }
+
+  onExportStarted() {
+    console.log('Starting PDF export...');
+  }
+
+  onExportCompleted() {
+    this.dialog.open(ModelPopupComponent, {
+      width: '400px',
+      data: {
+        title: 'Success',
+        message: 'PDF exported successfully',
+        type: 'success'
+      }
+    });
+  }
+
+  onExportError(error: Error) {
+    this.dialog.open(ModelPopupComponent, {
+      width: '400px',
+      data: {
+        title: 'Error',
+        message: 'Failed to export PDF. Please try again.',
+        type: 'error'
+      }
+    });
+  }
+
+  public cellClassRules: CellClassRules = {
+    'cellChanged': (params: any) => {
+      return this.checkIsCellChanged(params);
+    }
+  }
+
+  checkIsCellChanged(params: any) {
+    let result = this.businessRuleServ.isDataHasChanged(params, this.originalTableRow);
+    return result.isChanged;
+  }
+}
